@@ -19,7 +19,7 @@ const PREDEFINED_DROPDOWN_LIST = [
 const PREDIFINED_DROPDOWN_IDS = PREDEFINED_DROPDOWN_LIST.map(item => item.id);
 
 function Dropdown({ params, handleUpdate, ...propss }) {
-  return <div style={{"text-align":"center","margin-top":"20px"}}>
+  return <div style={{"margin-top":"15px"}}>
     <Select
       value={params.value?params.value:params.textDropdown}
       placeholder="Value Not Correct"

@@ -128,21 +128,30 @@ const Tables = ({data,setData,Columns,handleUpdateCell}) => {
   return (
     <Paper className={classes.root}>
       <Table className={classes.table} aria-label="caption table">
-        <caption>A barbone structure table example with a caption</caption>
         <TableHead>
           <TableRow>
-            <TableCell align="left" />
+            <TableCell align="left" >id</TableCell>
             <TableCell align="left">number1</TableCell>
             <TableCell align="left">number2</TableCell>
             <TableCell align="left">text1</TableCell>
             <TableCell align="left">text2</TableCell>
             <TableCell align="left">largeText2</TableCell>
             <TableCell align="left">Dropdown</TableCell>
+            <TableCell align="left">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {data.map(row => (
             <TableRow key={row.id}>
+              <TableCell className={classes.selectTableCell}>
+                <span>{row.id.split('-')[2]}</span>
+              </TableCell>
+              <CustomTableCell {...{ row, name: "number1", onChange }} />
+              <CustomTableCell {...{ row, name: "number2", onChange }} />
+              <CustomTableCell {...{ row, name: "text1", onChange }} />
+              <CustomTableCell {...{ row, name: "text2", onChange }} />
+              <CustomTableCell {...{ row, name: "largeText2", onChange }} />
+              <Dropdown  params={row} handleUpdate={handleUpdateCell}/>
               <TableCell className={classes.selectTableCell}>
                 {row.isEditMode ? (
                   <>
@@ -168,12 +177,6 @@ const Tables = ({data,setData,Columns,handleUpdateCell}) => {
                   </IconButton>
                 )}
               </TableCell>
-              <CustomTableCell {...{ row, name: "number1", onChange }} />
-              <CustomTableCell {...{ row, name: "number2", onChange }} />
-              <CustomTableCell {...{ row, name: "text1", onChange }} />
-              <CustomTableCell {...{ row, name: "text2", onChange }} />
-              <CustomTableCell {...{ row, name: "largeText2", onChange }} />
-              <Dropdown  params={row} handleUpdate={handleUpdateCell}/>
             </TableRow>
           ))}
         </TableBody>
